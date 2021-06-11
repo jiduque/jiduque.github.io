@@ -17,7 +17,7 @@ timezone: America/Chicago
 # --------------------------
 title: Jorge Duque                          # the main title
 
-tagline: A text-focused Jekyll theme   # it will display as the sub-title
+tagline: Problems & Ramblings    # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
   A minimal, portfolio, sidebar,
@@ -29,12 +29,6 @@ url: 'https://jiduque.github.io'
 
 github:
   username: jiduque             # change to your github username
-
-twitter:
-  username: twitter_username            # change to your twitter username
-
-linkedin:
-  username: jiduque
  
 social:
   # Change to your full name.
@@ -70,7 +64,7 @@ google_analytics:
 #     light  - Use the light color scheme
 #     dark   - Use the dark color scheme
 #
-theme_mode:   # [light|dark]
+theme_mode: dark   # [light|dark]
 
 # The CDN endpoint for images.
 # Notice that once it is assigned, the CDN url

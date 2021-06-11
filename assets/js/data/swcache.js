@@ -38,7 +38,7 @@ const resource = [
   '{{ favicon_path }}/mstile-150x150.png',
   '{{ favicon_path }}/site.webmanifest',
   '{{ favicon_path }}/browserconfig.xml'
-
+  
 ];
 
 /* The request url with below domain will be cached */
