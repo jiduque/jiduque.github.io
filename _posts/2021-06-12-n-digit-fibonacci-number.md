@@ -2,7 +2,7 @@
 title: N-digit Fibonacci Number
 author: Jorge Duque
 date: 2020-06-12 
-categories: [Project Euler, Math]
+categories: [Math, Project Euler]
 math: true
 mermaid: false
 ---
