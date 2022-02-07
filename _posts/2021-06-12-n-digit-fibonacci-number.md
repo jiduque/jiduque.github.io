@@ -1,7 +1,7 @@
 ---
 title: N-digit Fibonacci Number
 author: Jorge Duque
-date: 2020-06-12 
+date: 2021-06-12 
 categories: [Math, Project Euler]
 math: true
 mermaid: false
