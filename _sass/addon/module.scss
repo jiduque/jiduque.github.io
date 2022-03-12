@@ -7,7 +7,7 @@
 %heading {
   color: var(--heading-color);
   font-weight: 400;
-  font-family: 'Lato', 'Microsoft Yahei', sans-serif;
+  font-family: 'Lucida Console', Monaco, monospace;
 }
 
 %tag-hover {
@@ -22,8 +22,8 @@
 }
 
 %link-hover {
-  color: #d2603a !important;
-  border-bottom: 1px solid #d2603a;
+  color: burlywood !important;
+  border-bottom: 1px solid burlywood;
   text-decoration: none;
 }
 
