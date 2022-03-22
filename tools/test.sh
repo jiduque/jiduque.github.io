@@ -6,6 +6,8 @@
 #
 # Usage: bash /path/to/test.sh [indicated path]
 
+FILES_JS_ANIMATIONS="/posts/child-simulation/"
+
 DEST=_site
 URL_IGNORE=cdn.jsdelivr.net
 
@@ -60,6 +62,7 @@ if $_build; then
 fi
 
 bundle exec htmlproofer "$DEST" \
+  --file_ignore $FILES_JS_ANIMATIONS \
   --disable-external \
   --check-html \
   --empty_alt_ignore \
