@@ -1,5 +1,5 @@
 ---
-title: Wealth Dustribution
+title: Wealth Distribution
 author: Jorge Duque
 date: 2022-06-08
 categories: [Simulations, Agent-Based Models]
