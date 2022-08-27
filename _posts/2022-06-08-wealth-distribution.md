@@ -164,7 +164,7 @@ plot_distribution(fixed_result)
 
 
     
-![png](../images/2022-06-08-wealth-distribution/output_11_0.png)
+![png](/images/2022-06-08-wealth-distribution/output_11_0.png)
     
 
 
@@ -217,7 +217,7 @@ plot_distribution(fractional_results)
 
 
     
-![png](../images/2022-06-08-wealth-distribution/output_17_0.png)
+![png](/images/2022-06-08-wealth-distribution/output_17_0.png)
     
 
 
@@ -268,6 +268,6 @@ plot_distribution(average_result)
 
 
     
-![png](../images/2022-06-08-wealth-distribution/output_22_0.png)
+![png](/images/2022-06-08-wealth-distribution/output_22_0.png)
     
 
