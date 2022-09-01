@@ -1,7 +1,7 @@
 ---
 title: Cute Counter
 author: Jorge Duque
-date: 2021-08-27
+date: 2022-08-27
 categories: [Algorithms, Probability]
 math: true
 mermaid: false
