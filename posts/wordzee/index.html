@@ -1,0 +1,319 @@
+<!DOCTYPE html><html lang="en-US" mode="dark" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="The Stupid Games I Play: Wordzee" /><meta name="author" content="Jorge Duque" /><meta property="og:locale" content="en_US" /><meta name="description" content="Lately I’ve been playing this game called Wordzee a lot and have been wanting to do a mathematical analysis on it. I’m mainly interested in two things about this game: strategies &amp; the most points you could have in a game. In this article, I will go over the latter expect another post about this game at some point in the future." /><meta property="og:description" content="Lately I’ve been playing this game called Wordzee a lot and have been wanting to do a mathematical analysis on it. I’m mainly interested in two things about this game: strategies &amp; the most points you could have in a game. In this article, I will go over the latter expect another post about this game at some point in the future." /><link rel="canonical" href="https://jiduque.github.io/posts/wordzee/" /><meta property="og:url" content="https://jiduque.github.io/posts/wordzee/" /><meta property="og:site_name" content="Jorge Duque" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2022-11-11T00:00:00-06:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="The Stupid Games I Play: Wordzee" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"author":{"@type":"Person","name":"Jorge Duque"},"description":"Lately I’ve been playing this game called Wordzee a lot and have been wanting to do a mathematical analysis on it. I’m mainly interested in two things about this game: strategies &amp; the most points you could have in a game. In this article, I will go over the latter expect another post about this game at some point in the future.","url":"https://jiduque.github.io/posts/wordzee/","@type":"BlogPosting","headline":"The Stupid Games I Play: Wordzee","dateModified":"2023-04-17T17:48:37-05:00","datePublished":"2022-11-11T00:00:00-06:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://jiduque.github.io/posts/wordzee/"},"@context":"https://schema.org"}</script><title>The Stupid Games I Play: Wordzee | Jorge Duque</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="Jorge Duque"><meta name="application-name" content="Jorge Duque"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script defer src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script> /* see: <https://docs.mathjax.org/en/latest/options/input/tex.html#tex-options> */ MathJax = { tex: { inlineMath: [ /* start/end delimiter pairs for in-line math */ ['$','$'], ['\\(','\\)'] ], displayMath: [ /* start/end delimiter pairs for display math */ ['$$', '$$'], ['\\[', '\\]'] ] } }; </script> <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script> <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"> </script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="https://avatars.githubusercontent.com/u/34616214?v=4" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">Jorge Duque</a></div><div class="site-subtitle font-italic">Problems & Ramblings</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/about/" class="nav-link"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT ME</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/jiduque" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://www.linkedin.com/in/jiduque" aria-label="linkedin" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['jor.duqu','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>The Stupid Games I Play: Wordzee</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>The Stupid Games I Play: Wordzee</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> Jorge Duque </span> <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Fri, Nov 11, 2022, 12:00 AM -0600" prep="on" > Nov 11, 2022 <i class="unloaded">2022-11-11T00:00:00-06:00</i> </span></div><div> <span> <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Mon, Apr 17, 2023, 5:48 PM -0500" prefix="Updated " > Apr 17 <i class="unloaded">2023-04-17T17:48:37-05:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2370 words">13 min</span></div></div><div class="post-content"><p>Lately I’ve been playing this game called Wordzee a lot and have been wanting to do a mathematical analysis on it. I’m mainly interested in two things about this game: strategies &amp; the most points you could have in a game. In this article, I will go over the latter expect another post about this game at some point in the future.</p><h2 id="how-you-play-the-game">How You Play The Game</h2><p>Wordzee is a two-player turn-based word game, where the highest score wins. Each game has five rounds where you assemble the best word(s) possible from a set of random letters. If you don’t like some letters, you can use the swap button to exchange some letters for some random ones. You have the option to hold some letters and can only swap up two times. For each word, choose the best place on the game board to play it. There are five rows you can place words in, as long as the word isn’t longer than the row. Each tile has its own point value and certain squares and rows on the board will grant bonus points.</p><h2 id="gathering-data">Gathering Data</h2><p>At this point, we could begin the analysis. But without data, the analysis this whole thing would remain symbolic, and I’d like to have some concrete numbers as we go along. The two questions that we need answered are:</p><ol><li>What words are valid?<li>How many points is each letter worth?</ol><p>I couldn’t find a list of official words for the game, so I used the list for Scrabble. To get the points of the letters, I just played a bunch of games and took note of what the numbers were.</p><h3 id="valid-words">Valid Words</h3><p>I couldn’t find an available list of Scrabble words as a dataset, so I decided to gather the data myself. I scrapped the words off the Scrabble section of the <a href="https://scrabble.merriam.com">Merriam-Webster</a> website. The script I used for that can be found <a href="https://github.com/jiduque/effective-octo-giggle/blob/main/wordzee/scrabble_scrapper.py">here</a>. In it, I gather the words allowed in Scrabble and remove the words longer than 7 letters and smaller than 2. In this notebook, I will just import the result.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">scrabble_scrapper</span> <span class="kn">import</span> <span class="n">load_words</span>
+
+<span class="n">VALID_WORDS</span> <span class="o">=</span> <span class="n">load_words</span><span class="p">()</span>
+</pre></table></code></div></div><h3 id="letter-values">Letter Values</h3><p>I took screenshots of several games so that I can get the points of the letters at different rounds. The pattern I noticed was that the points of the letters are multiplied by the round number. So if “B” was worth 20 points in round five, it was worth 4 in round one. This makes it easier to get the values because we don’t need to look at all letters in each round, we could do it in a couple of games. Below are some observations I made and a function to normalize them to what their values would be in the first round.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">string</span> <span class="kn">import</span> <span class="n">ascii_lowercase</span>
+
+<span class="c1"># letter, points, round
+</span><span class="n">DataPoint</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+<span class="n">Data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">DataPoint</span><span class="p">]</span>
+<span class="n">LetterVals</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span>
+
+<span class="n">letter_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">(</span><span class="s">"a"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">"b"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">"c"</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s">"d"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"e"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"f"</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"g"</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">"h"</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">"i"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"j"</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s">"k"</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"l"</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"m"</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">"n"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"o"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"p"</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="p">(</span><span class="s">"q"</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s">"r"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"s"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">"t"</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"u"</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s">"v"</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s">"w"</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span>  <span class="p">(</span><span class="s">"x"</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="p">(</span><span class="s">"y"</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s">"z"</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">letter_values</span><span class="p">(</span><span class="n">data</span><span class="p">:</span> <span class="n">Data</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">LetterVals</span><span class="p">,</span> <span class="bp">None</span><span class="p">]:</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">letter</span><span class="p">,</span> <span class="n">point</span><span class="p">,</span> <span class="n">game_round</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">point</span> <span class="o">//</span> <span class="n">game_round</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">letter</span> <span class="ow">in</span> <span class="n">output</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">output</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span> <span class="o">!=</span> <span class="n">x</span><span class="p">):</span>
+            <span class="k">print</span><span class="p">(</span><span class="s">"inconsistency present"</span><span class="p">)</span>
+            <span class="k">return</span> <span class="bp">None</span>
+        <span class="n">output</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="n">diff</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">ascii_lowercase</span><span class="p">)</span> <span class="o">-</span> <span class="nb">set</span><span class="p">(</span><span class="n">output</span><span class="p">.</span><span class="n">keys</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">diff</span><span class="p">:</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"letters are missing in the data: </span><span class="si">{</span><span class="n">diff</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">output</span>
+
+
+<span class="n">LETTER_VALUES</span> <span class="o">=</span> <span class="n">letter_values</span><span class="p">(</span><span class="n">letter_data</span><span class="p">)</span>
+<span class="n">LETTER_VALUES</span><span class="p">[</span><span class="s">' '</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></table></code></div></div><h2 id="the-perfect-game">The Perfect Game</h2><p>Let’s be dreamers and look for the perfect game: the set of words and board configuration with the highest score. The obvious way to go about that is to iterate through all board configurations and finding the collection of words that gives the most points. But before just jumping right in, we should calculate how many possible games there are to make sure we don’t fry our computer.</p><h3 id="a-little-combinatorics">A Little Combinatorics</h3><p>At a high level, the number we’re looking for is the total number of board configurations times the total number of possible valid collections of words. The number of board configurations is equal to the number of ways we can arrange the triple word and double word bonuses, ${5}\choose{2}$, times the number of places we can place those bonuses. For the first three rows that is $R$ and for the last two it is $R-1$. So, total board configurations can be computed with the code below.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">comb</span>
+
+<span class="n">where_tl_go</span> <span class="o">=</span> <span class="n">comb</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">where_bonus_goes</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">*</span> <span class="mi">4</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">6</span>
+<span class="n">board_configurations</span> <span class="o">=</span> <span class="n">where_tl_go</span> <span class="o">*</span> <span class="n">where_bonus_goes</span>
+</pre></table></code></div></div><p>The number of valid word collections is pretty much: $\prod_{i=3}^7 (\text{number of words} \leq i)$. The code block below will compute that value and summarize the values of interest.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">mul</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">accumulate</span>
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="nb">reduce</span>
+
+<span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">VALID_WORDS</span><span class="p">))</span>
+<span class="n">cdf</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">accumulate</span><span class="p">(</span><span class="n">counter</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">7</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="n">sets_of_words</span> <span class="o">=</span> <span class="nb">reduce</span><span class="p">(</span><span class="n">mul</span><span class="p">,</span> <span class="n">cdf</span><span class="p">[</span><span class="mi">2</span><span class="p">:])</span>
+
+<span class="n">possible_games</span> <span class="o">=</span> <span class="n">sets_of_words</span> <span class="o">*</span> <span class="n">board_configurations</span>
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">board_configurations</span><span class="o">=</span><span class="si">}</span><span class="se">\n</span><span class="s">number_of_words=</span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">VALID_WORDS</span><span class="p">)</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">sets_of_words</span><span class="o">=</span><span class="p">:</span><span class="n">e</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">possible_games</span><span class="o">=</span><span class="p">:</span><span class="n">e</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>board_configurations=18000
+number_of_words=8546
+sets_of_words=9.850437e+19
+possible_games=1.773079e+24
+</pre></table></code></div></div><p>Well, that’s not going to happen; that search space is way too large. I would die before this finished running on my computer. We need something more clever because I can’t die before being the world’s best Wordzee player.</p><p><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="https://tenor.com/view/delusions-preston-teagardin-robert-pattinson-the-devil-all-the-time-upset-gif-18149886.gif" alt="Delusions" /></p><h2 id="words-with-largest-expected-value">Words With Largest Expected Value</h2><h3 id="first-three-rows">First Three Rows</h3><p>Let $R$ be the length of a row. Then for rows 1, 2, and 3 we get the following expected value:</p>\[E\left[ \text{word} | \text{R} \right] = \frac{5R + 7}{5 R} \sum_i^R L_i\]<p>where $L_i$ is the number of points the $i$th letter of the word gets. This also assumes the length of the word is equal to or less than the row size. If the word is longer than the row size, the value is 0. To calculate this, we use a fan-favorite: the law of total expectation. Given that we know the bonus amount $B$ and that the location is uniformly distributed, the expectation can be easily calculated. There are $R$ cases of where the bonus is located, each with probability $1/R$ of occurring. Each letter value will be added normally $R-1$ times and one time its values will be multiplied by $B$. This means given $B = b$, the expected value of a word in a row is:</p>\[E\left[ \text{word} | \text{R}, B=b \right] = \frac{R - 1 + b}{R} \sum_i^R L_i\]<p>Now we will use the law of total expectation to get the final result.</p>\[E\left[ \text{word} | \text{R} \right] = \sum_{b=2}^3 E\left[ \text{word} | \text{R,} B = b \right] P\left( B = b \right)\] \[= \frac{2}{5} E\left[ \text{word} | \text{R,} B = 3 \right] + \frac{3}{5} E\left[ \text{word} | \text{R,} B = 2 \right]\] \[= \frac{2(R + 2)}{5R} \sum_i^R L_i + \frac{3(R + 1)}{5R} \sum_i^R L_i\]<p>Simplifying that last expression gives us the result shown at the beginning of this section.</p><h3 id="last-two-rows">Last Two Rows</h3><p>For the last two rows, the last letter is reserved for the word bonuses. This means we can only give a letter bonus to all but the last one. With regard to our calculation, this means that the expected value computed above can be used for the first $R-1$ letters, and the value of the last letter will just be added to the total. The last thing to add is the word bonus. Putting that all together we get:</p>\[E\left[ \text{word} | \text{R} \right] = \left[L_R + \frac{5R + 2}{5(R - 1)} \sum_i^{R-1} L_i\right] M(\text{word}, R)\]<p>Where $M$ is defined as the following conditional:</p>\[M(\text{word}, R) = \left\{ \begin{array}{lr} 1 &amp; \text{length of word } &lt; R\\ 2 &amp; R = 6\\ 3 &amp; R = 7\\ \end{array}\right.\]<h3 id="all-together">All Together</h3><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+</pre><td class="rouge-code"><pre><span class="n">Word</span> <span class="o">=</span> <span class="nb">str</span>
+
+<span class="k">def</span> <span class="nf">expected</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="n">Word</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">letter_vals</span><span class="p">:</span> <span class="n">LetterVals</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+
+    <span class="n">last_val</span> <span class="o">=</span> <span class="n">letter_vals</span><span class="p">[</span><span class="n">word</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]]</span> <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="k">else</span> <span class="mi">0</span>
+    <span class="n">letters_to_analyze</span> <span class="o">=</span> <span class="n">word</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="k">else</span> <span class="n">word</span>
+    <span class="n">row_length</span> <span class="o">=</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">r</span> <span class="o">&gt;</span> <span class="mi">5</span> <span class="k">else</span> <span class="n">r</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">last_val</span> <span class="o">+</span> <span class="n">all_random_expected</span><span class="p">(</span><span class="n">letters_to_analyze</span><span class="p">,</span> <span class="n">row_length</span><span class="p">,</span> <span class="n">letter_vals</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">multiplier</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">r</span><span class="p">)</span> <span class="o">*</span> <span class="n">output</span>
+
+
+<span class="k">def</span> <span class="nf">all_random_expected</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="n">Word</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">letter_vals</span><span class="p">:</span> <span class="n">LetterVals</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">r</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">letter_vals</span><span class="p">[</span><span class="n">letter</span><span class="p">]</span> <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word</span><span class="p">)</span>
+    <span class="n">output</span> <span class="o">*=</span> <span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">r</span> <span class="o">+</span> <span class="mi">7</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">5</span> <span class="o">*</span> <span class="n">r</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span>
+
+<span class="k">def</span> <span class="nf">multiplier</span><span class="p">(</span><span class="n">word</span><span class="p">:</span> <span class="n">Word</span><span class="p">,</span> <span class="n">r</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">r</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">r</span> <span class="o">-</span> <span class="mi">4</span>
+</pre></table></code></div></div><h3 id="results">Results</h3><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="n">Words</span> <span class="o">=</span> <span class="nb">list</span><span class="p">[</span><span class="n">Word</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">top_k_for_row</span><span class="p">(</span><span class="n">words</span><span class="p">:</span> <span class="n">Words</span><span class="p">,</span> <span class="n">letter_vals</span><span class="p">:</span> <span class="n">LetterVals</span><span class="p">,</span> <span class="n">row</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Words</span><span class="p">:</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="n">row</span> <span class="o">+</span> <span class="mi">3</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">w</span><span class="p">:</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">expected</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">r</span><span class="p">,</span> <span class="n">letter_vals</span><span class="p">)),</span> <span class="n">words</span><span class="p">))</span>
+    <span class="n">output</span><span class="p">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">output</span><span class="p">[:</span><span class="n">k</span><span class="p">]</span>
+
+
+<span class="k">def</span> <span class="nf">top_k</span><span class="p">(</span><span class="n">words</span><span class="p">:</span> <span class="n">Words</span><span class="p">,</span> <span class="n">letter_vals</span><span class="p">:</span> <span class="n">LetterVals</span><span class="p">,</span> <span class="n">k</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">Words</span><span class="p">]:</span>
+    <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span>
+        <span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">top_k_for_row</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">letter_vals</span><span class="p">,</span> <span class="n">row</span><span class="p">,</span> <span class="n">k</span><span class="p">),</span>
+        <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+    <span class="p">))</span>
+
+
+<span class="k">for</span> <span class="n">output_row</span><span class="p">,</span> <span class="n">vals</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">top_k</span><span class="p">(</span><span class="n">VALID_WORDS</span><span class="p">,</span> <span class="n">LETTER_VALUES</span><span class="p">)):</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"row: </span><span class="si">{</span><span class="n">output_row</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s">"</span><span class="se">\t</span><span class="s">"</span> <span class="o">+</span> <span class="s">"</span><span class="se">\t\t</span><span class="s">"</span><span class="p">.</span><span class="n">join</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="sa">f</span><span class="s">"</span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s">: </span><span class="si">{</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]:.</span><span class="mi">2</span><span class="n">f</span><span class="si">}</span><span class="s">"</span><span class="p">,</span> <span class="n">vals</span><span class="p">)))</span>
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>row: 1
+	jo: 16.13		qi: 16.13		za: 16.13		xu: 14.67		ax: 13.20
+row: 2
+	zzz: 40.50		zuz: 29.70		zax: 25.65		cuz: 21.60		pyx: 21.60
+row: 3
+	jazzy: 44.80		qajaq: 40.96		jazz: 39.68		zizz: 39.68		zzz: 38.40
+row: 4
+	jazzbo: 91.60		jazzed: 85.92		zizzed: 85.92		jazzer: 83.92		jazzes: 83.92
+row: 5
+	zigzags: 106.60		palazzi: 102.90		palazzo: 102.90		jackdaw: 97.10		jackpot: 95.50
+</pre></table></code></div></div><h2 id="greedy-thoughts">Greedy Thoughts</h2><p>The information above was nice, but it’s pretty useless in a game because those words are only useful if we don’t know the board configurations. We can get around this by thinking about the problem a little more instead of just jumping in. The best way to think about this problem is to think about it in a greedy way. To maximize a game, we need to maximize each row (and possibly try to get the extra wordzee bonus for filling up the whole board). This means for each row, we should look for potentially two words: the max one and the max one that fills the whole row. In the brute force way, the real killer in this search is the number of board configurations. Fortunately, each word has the best configuration when the letter bonus is in the location of the word’s letter with the most points. We no longer need to search through configurations and can just search through the words for each row. To do this, I built a data structure that has two running max’s for each row. Then we can just feed each word to this data structure and then retrieve the best words and the location of the best letter. All of this logic is written in the data structures found <a href="https://github.com/jiduque/effective-octo-giggle/blob/main/wordzee/wordzee_search.py">here</a>. For this notebook, I will just import it and do the final steps manually.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="kn">from</span> <span class="nn">wordzee_search</span> <span class="kn">import</span> <span class="n">GameAnalyzer</span>
+
+<span class="n">analyzer</span> <span class="o">=</span> <span class="n">GameAnalyzer</span><span class="p">(</span><span class="n">LETTER_VALUES</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">word_str</span> <span class="ow">in</span> <span class="n">VALID_WORDS</span><span class="p">:</span>
+    <span class="n">analyzer</span><span class="p">.</span><span class="n">update</span><span class="p">(</span><span class="n">word_str</span><span class="p">)</span>
+</pre></table></code></div></div><h3 id="results-1">Results</h3><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="k">for</span> <span class="n">ra</span> <span class="ow">in</span> <span class="n">analyzer</span><span class="p">.</span><span class="n">row_analyzers</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"Row </span><span class="si">{</span><span class="n">ra</span><span class="p">.</span><span class="n">row</span><span class="si">}</span><span class="s">:"</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="se">\t</span><span class="s">best:</span><span class="si">{</span><span class="n">ra</span><span class="p">.</span><span class="n">best</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">ra</span><span class="p">.</span><span class="n">does_it_matter</span><span class="p">():</span>
+        <span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"</span><span class="se">\t</span><span class="s">full: </span><span class="si">{</span><span class="n">ra</span><span class="p">.</span><span class="n">best_full</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre>Row 1:
+	best:Word(word='zzz', base=30, max_loc=0, points_at_max_loc=10)
+Row 2:
+	best:Word(word='jazz', base=31, max_loc=0, points_at_max_loc=10), Word(word='zizz', base=31, max_loc=0, points_at_max_loc=10)
+Row 3:
+	best:Word(word='jazzy', base=35, max_loc=0, points_at_max_loc=10)
+Row 4:
+	best:Word(word='jazzbo', base=36, max_loc=0, points_at_max_loc=10)
+Row 5:
+	best:Word(word='jazzbo', base=36, max_loc=0, points_at_max_loc=10)
+	full: Word(word='zigzags', base=29, max_loc=0, points_at_max_loc=10)
+</pre></table></code></div></div><p>Only row 5 had a word that maximizes points but doesn’t fill it. This means we have two scenarios to check for the best game: the one where we just maximize word and then one where we fill the board. We calculate the score to see which one is the better one.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="k">def</span> <span class="nf">game_points</span><span class="p">(</span><span class="n">words</span><span class="p">:</span> <span class="n">Words</span><span class="p">,</span> <span class="n">bonuses</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">orders</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="n">total_points</span><span class="p">,</span> <span class="n">total_slots</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="n">all_slots</span> <span class="o">=</span> <span class="mi">25</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">words</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">order</span> <span class="o">=</span> <span class="n">orders</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">bonuses</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">points</span> <span class="o">=</span> <span class="n">order</span> <span class="o">*</span> <span class="n">word</span><span class="p">.</span><span class="n">points_with_bonus</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">order</span> <span class="o">==</span> <span class="mi">4</span> <span class="ow">and</span> <span class="n">word</span><span class="p">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+            <span class="n">points</span> <span class="o">*=</span> <span class="mi">2</span>
+        <span class="k">elif</span> <span class="n">order</span> <span class="o">==</span> <span class="mi">5</span> <span class="ow">and</span> <span class="n">word</span><span class="p">.</span><span class="n">length</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+            <span class="n">points</span> <span class="o">*=</span> <span class="mi">3</span>
+
+        <span class="n">total_points</span> <span class="o">+=</span> <span class="n">points</span>
+        <span class="n">total_slots</span> <span class="o">+=</span> <span class="n">word</span><span class="p">.</span><span class="n">length</span>
+
+    <span class="k">if</span> <span class="n">total_slots</span> <span class="o">==</span> <span class="n">all_slots</span><span class="p">:</span>
+        <span class="n">total_points</span> <span class="o">+=</span> <span class="mi">100</span>
+
+    <span class="k">return</span> <span class="n">total_points</span>
+</pre></table></code></div></div><p>When it comes to order and triple-letter bonus locations: we take a greedy approach again. Take the ones that will maximize everything. From the look of the scores, that means we play the words in row order and then the last two rows have the triple-letter bonuses.</p><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="n">greedy_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">ra</span><span class="p">.</span><span class="n">best</span><span class="p">.</span><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">ra</span> <span class="ow">in</span> <span class="n">analyzer</span><span class="p">.</span><span class="n">row_analyzers</span><span class="p">]</span>
+<span class="n">game_points</span><span class="p">(</span><span class="n">greedy_words</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>985
+</pre></table></code></div></div><div class="language-python highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="n">filling_words</span> <span class="o">=</span> <span class="p">[</span><span class="n">ra</span><span class="p">.</span><span class="n">best</span><span class="p">.</span><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="k">for</span> <span class="n">ra</span> <span class="ow">in</span> <span class="n">analyzer</span><span class="p">.</span><span class="n">row_analyzers</span><span class="p">]</span>
+<span class="n">filling_words</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="n">analyzer</span><span class="p">.</span><span class="n">row_analyzers</span><span class="p">[</span><span class="mi">4</span><span class="p">].</span><span class="n">best_full</span><span class="p">.</span><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">game_points</span><span class="p">(</span><span class="n">filling_words</span><span class="p">,</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>1540
+</pre></table></code></div></div><h2 id="conclusion">Conclusion</h2><p>This means there are two games tied for the best games you could have. This is because the second row could be ‘jazz’ or ‘zizz’ and it wouldn’t make a difference. The board configuration is the following:</p><ul><li>triple letter bonuses are in the last two rows<li>all bonus locations are on the first character.</ul><p>Strategy wise, you will fill each row in order with the following words:</p><ul><li>zzz<li>jazz or zizz<li>jazzy<li>jazzbo<li>zigzags</ul><p>Because all the slots are filled, you get all bonuses. Coming out to a whopping 1540 points. This makes the best two games nearly twice the number of points as the third-best game, 985. That game is the same configuration and same strategy, but using jazzbo for the last row as well as the fourth. I will compare strategies in another post soon-ish.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/games/'>Games</a>, <a href='/categories/math/'>Math</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=The Stupid Games I Play: Wordzee - Jorge Duque&url=https://jiduque.github.io/posts/wordzee/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=The Stupid Games I Play: Wordzee - Jorge Duque&u=https://jiduque.github.io/posts/wordzee/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=The Stupid Games I Play: Wordzee - Jorge Duque&url=https://jiduque.github.io/posts/wordzee/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <a href="https://www.linkedin.com/sharing/share-offsite/?url=https://jiduque.github.io/posts/wordzee/" data-toggle="tooltip" data-placement="top" title="Linkedin" target="_blank" rel="noopener" aria-label="Linkedin"> <i class="fa-fw fab fa-linkedin"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/wordzee/">The Stupid Games I Play: Wordzee</a><li><a href="/posts/walmart-hours-and-crime/">Walmart Hours and Crime</a><li><a href="/posts/sum-swamp/">Sum Swamp</a><li><a href="/posts/cute-counter/">Cute Counter</a><li><a href="/posts/wealth-distribution/">Wealth Distribution</a></ul></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/number-match/"><div class="card-body"> <span class="timeago small" > Apr 17 <i class="unloaded">2023-04-17T00:00:00-05:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Number Match: No-Match Game(s)</h3><div class="text-muted small"><p> Introduction to Number Match Easy Brain does it again! I’ve been playing their game Number Match and it’s pretty fun. The game is relatively straight forward: match pairs of numbers and clear the b...</p></div></div></a></div><div class="card"> <a href="/posts/n-digit-fibonacci-number/"><div class="card-body"> <span class="timeago small" > Jun 12, 2021 <i class="unloaded">2021-06-12T00:00:00-05:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>N-digit Fibonacci Number</h3><div class="text-muted small"><p> Note: This is problem 25 on Project Euler Problem Statement The Fibonacci sequence is defined by the recurrence relation: [F_n = F_{n−1} + F_{n−2}] where $F_1 = 1$ and $F_2 = 1$. If you continu...</p></div></div></a></div><div class="card"> <a href="/posts/sum-of-even-fibonacci-numbers/"><div class="card-body"> <span class="timeago small" > Jun 12, 2021 <i class="unloaded">2021-06-12T00:00:00-05:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>Sum of Even Fibonacci Numbers</h3><div class="text-muted small"><p> Note: This is problem 2 on Project Euler Problem Statement Each new term in the Fibonacci sequence is generated by adding the previous two terms. By starting with 1 and 2, the first 10 terms will...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/cute-counter/" class="btn btn-outline-primary" prompt="Older"><p>Cute Counter</p></a> <a href="/posts/number-match/" class="btn btn-outline-primary" prompt="Newer"><p>Number Match: No-Match Game(s)</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2023 <a href="">Jorge Duque</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://jiduque.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script>
